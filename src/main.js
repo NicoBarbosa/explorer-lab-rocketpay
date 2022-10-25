@@ -10,6 +10,10 @@ function setCardType(type) {
   const colors = {
     visa: ["#436D99", "#2D57F2"],
     mastercard: ["#DF6F29", "#C69347"],
+    american: ["#29DFD4", "#47C672"],
+    discover: ["#F22DDF", "#AC8522"],
+    maestro: ["#F22D2D", "#2D22AC"],
+    diners: ["#131245", "#241A94"],
     default: ["black", "gray"],
   }
 
@@ -35,6 +39,26 @@ const cardNumberPattern = {
       mask: "0000 0000 0000 0000",
       regex: /(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
       cardtype: "mastercard",
+    },
+    {
+      mask: "0000 000000 00000",
+      regex: /^3[47]\d{0,13}/,
+      cardtype: "american",
+    },
+    {
+      mask: "0000 000000 0000",
+      regex: /^3(?:0([0-5]|9)|[689]\d?)\d{0,11}/,
+      cardtype: "diners",
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      regex: /^(?:5[0678]\d{0,2}|6304|67\d{0,2})\d{0,12}/,
+      cardtype: "maestro",
+    },
+    {
+      mask: "0000 0000 0000 0000",
+      regex: /^(?:6011|65\d{0,2}|64[4-9]\d?)\d{0,12}/,
+      cardtype: "discover",
     },
     {
       mask: "0000 0000 0000 0000",
@@ -74,6 +98,7 @@ const expirationDatePattern = {
 const expirationDateMasked = IMask(expirationDate, expirationDatePattern)
 
 
+
 const securityCode = document.querySelector('#security-code')
 const securityCodePattern = {
   mask: '0000'
@@ -91,6 +116,7 @@ addButton.addEventListener('click', () => {
 document.querySelector('form').addEventListener('submit', (event) => {
   event.preventDefault()
 })
+
 
 
 const cardHolder = document.querySelector('#card-holder')
