@@ -1,24 +1,38 @@
 import "./css/index.css"
 import IMask from "imask"
 
-const ccBgLight01 = document.querySelector('.cc-bg svg > g g:nth-child(1) path')
-const ccBgLight02 = document.querySelector('.cc-bg svg > g g:nth-child(2) path')
+const ccBgLight01 = document.querySelector(
+  ".cc-bg svg > g g:nth-child(1) ellipse"
+)
+const ccBgLight02 = document.querySelector(
+  ".cc-bg svg > g g:nth-child(2) ellipse"
+)
+const ccBgLight03 = document.querySelector(
+  ".cc-bg svg > g g:nth-child(3) ellipse"
+)
+const ccBgLight04 = document.querySelector(
+  ".cc-bg svg > g g:nth-child(4) path"
+)
+const ccBgLight05 = document.querySelector(".cc-bg svg > g g:nth-child(5) path")
 
 const ccLogoCard = document.querySelector('.cc-logo span:nth-child(2) img')
 
 function setCardType(type) {
   const colors = {
-    visa: ["#436D99", "#2D57F2"],
-    mastercard: ["#DF6F29", "#C69347"],
-    american: ["#29DFD4", "#47C672"],
-    discover: ["#F22DDF", "#AC8522"],
-    maestro: ["#F22D2D", "#2D22AC"],
-    diners: ["#131245", "#241A94"],
-    default: ["black", "gray"],
+    visa: ["#ADFFF5", "#6C2DD2", "#4012C2", "#39DBFF", "#290BDF"],
+    mastercard: ["#FF3939", "#DF0B18", "#C2BB12", "#F4FFAD", "#D22D2D"],
+    american: ["#12A3C2", "#ADB0FF", "#39B8FF", "#2DBED2", "#290BDF"],
+    discover: ["#FF7539", "#DF3E0B", "#FFEDAD", "#FF7539", "#DF3E0B"],
+    maestro: ["#2D5BD2", "#DF0B0B", "#1612C2", "#FFADAD", "#FF3939"],
+    diners: ["#0BD2DF", "#12C283", "#39C4FF", "#ADB5FF", "#2DD28D"],
+    default: ["#272A40", "#425862", "#8E02A5", "#363B3C", "#606865"],
   }
 
   ccBgLight01.setAttribute("fill", colors[type][0])
   ccBgLight02.setAttribute("fill", colors[type][1])
+  ccBgLight03.setAttribute("fill", colors[type][2])
+  ccBgLight04.setAttribute("fill", colors[type][3])
+  ccBgLight05.setAttribute("fill", colors[type][4])
   ccLogoCard.setAttribute("src", `cc-${type}.svg`)
 
 }
